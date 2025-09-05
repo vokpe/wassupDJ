@@ -15,4 +15,3 @@ uvicorn backend.main:app --reload
 
 # Terminal 2
 streamlit run ui/app.py
-
