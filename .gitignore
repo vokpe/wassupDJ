@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.*
+.cache/
+.ipynb_checkpoints/
+
+# Node/Electron/Frontend
+node_modules/
+build/
+dist/
+
+# OS
+.DS_Store
+
+# Data
+data/*.db
+data/cache/
