@@ -33,22 +33,30 @@ Goal: **Session-aware DJ next-track suggester**
 
 ## 📂 Project Structure
 
+```text
 wassupDJ/
-├── backend/
-│ ├── main.py # FastAPI app
-│ ├── db.py # SQLite helpers
-│ └── init.py
-├── data/
-│ └── tracks.db # SQLite database (autocreated/updated)
-├── queries/
-│ └── verify_flashdrive.sql
-├── scripts/
-│ ├── scan_library.py
-│ ├── migrate_add_serato_cols.py
-│ └── import_csv.py # (Serato history CSV import)
-├── ui/
-│ └── app.py # Streamlit UI
-└── README.md
+├── backend/                        # Backend API (FastAPI)
+│   ├── __init__.py
+│   ├── main.py                     # FastAPI app + routes (/health, /counts, /recent)
+│   └── db.py                       # SQLite helpers (connect, queries)
+│
+├── data/                           # Local data storage
+│   └── tracks.db                   # SQLite database (autocreated/updated)
+│
+├── queries/                        # SQL utilities for debugging
+│   └── verify_flashdrive.sql
+│
+├── scripts/                        # Ingestion + migration scripts
+│   ├── scan_library.py             # Scan flash drive / music folder → insert into DB
+│   ├── migrate_add_serato_cols.py  # Adds Serato-ready columns (bpm_serato, key_serato, crates, etc.)
+│   └── import_csv.py               # Import Serato history CSVs
+│
+├── ui/                             # Streamlit frontend
+│   └── app.py                      # Streamlit UI (shows transitions, future suggester UI)
+│
+└── README.md                       # Project docs
+```
+
 ---
 ## ▶ Run Locally
 
