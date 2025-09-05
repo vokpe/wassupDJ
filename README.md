@@ -1,4 +1,4 @@
-# AI Crate Chef (MVP Skeleton)
+# wassupDJ (MVP Skeleton)
 
 Goal: Session-aware DJ next-track suggester (harmonic + tempo + vibe) using Serato history + Spotify audio features.
 
