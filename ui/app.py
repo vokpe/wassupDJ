@@ -1,10 +1,17 @@
-import requests
-import streamlit as st
+import requests, streamlit as st
 
-st.set_page_config(page_title="AI Crate Chef", layout="centered")
+st.set_page_config(page_title="wassupDJ", layout="centered")
 st.title("wassupDJ - MVP")
 
 now = st.text_input("Now Playing (type a track name for demo)", "Test Track")
+
+with st.expander("Recent transitions"):
+    try:
+        r = requests.get("http://127.0.0.1:8000/recent", timeout=5).json()
+        for row in r.get("recent", []):
+            st.write(f"{row['prev']} → {row['nxt']}  {('('+row['played_at']+')') if row.get('played_at') else ''}")
+    except Exception as e:
+        st.warning(f"Could not load recent transitions: {e}")
 
 if st.button("Get Suggestions"):
     try:
@@ -17,3 +24,5 @@ if st.button("Get Suggestions"):
         st.error(f"Backend not running? {e}")
 else:
     st.caption("Start the backend (uvicorn) first, then click the button.")
+
+

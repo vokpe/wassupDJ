@@ -1,19 +1,20 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
+from . import db
 
-app = FastAPI(title="wassupDJ")
+app = FastAPI(title="wassupDJ API")
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    # also return simple DB stats so we know DB is reachable
+    try:
+        return {"status": "ok", "tracks": db.track_count(), "transitions": db.transition_count()}
+    except Exception as e:
+        return {"status": "degraded", "error": str(e)}
 
-@app.get("/suggest")
-def suggest(now_playing: str = "UNKNOWN"):
-    # Day 4+ will return real suggestions. For now, a stub.
-    return {
-        "now_playing": now_playing,
-        "suggestions": [
-            {"title": "Stub Track 1", "reason": "baseline demo"},
-            {"title": "Stub Track 2", "reason": "baseline demo"},
-            {"title": "Stub Track 3", "reason": "baseline demo"},
-        ],
-    }
+@app.get("/recent")
+def recent(limit: int = Query(10, ge=1, le=100)):
+    return {"recent": db.recent_transitions(limit)}
+
+@app.get("/counts")
+def counts():
+    return {"tracks": db.track_count(), "transitions": db.transition_count()}
