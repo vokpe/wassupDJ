@@ -1,1 +1,11 @@
 github personal access token: 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
+
+
+python scripts/scan_library.py --root "/Volumes/\!spidz" --limit 200
+
+
+give me a ready-to-run SQL debug file ("queries/verify_flashdrive.sql") and lets move on with day 2
+
+turn on your backend:  uvicorn backend.main:app --reload
+
+
