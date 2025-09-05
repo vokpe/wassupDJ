@@ -9,3 +9,6 @@ give me a ready-to-run SQL debug file ("queries/verify_flashdrive.sql") and lets
 turn on your backend:  uvicorn backend.main:app --reload
 
 
+https://tobiasjacob.github.io/seratolibraryparser/index.html
+
+
