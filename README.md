@@ -56,7 +56,12 @@ wassupDJ/
 │
 └── README.md                       # Project docs
 ```
-
+---
+## 📊 Database
+- `data/tracks.db` is created locally by running:
+  ```bash
+  python scripts/scan_library.py --root "/path/to/music"
+  python scripts/import_csv.py --file path/to/history.csv
 ---
 ## ▶ Run Locally
 
